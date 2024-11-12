@@ -1,4 +1,5 @@
-// src/events/interactionCreate.js
+const errorHandler = require('../utils/errorHandler');
+
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction, userSessionData) {
@@ -12,7 +13,7 @@ module.exports = {
             await command.execute(interaction, userSessionData);
         } catch (error) {
             console.error(`Error executing ${interaction.commandName}:`, error);
-            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+            await errorHandler(interaction, error);
         }
     },
 };
