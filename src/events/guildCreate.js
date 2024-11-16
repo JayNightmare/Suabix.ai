@@ -6,7 +6,7 @@ module.exports = {
         console.log(`Joined new guild: ${guild.name} (${guild.id})`);
 
         // Parse allowed server IDs from .env
-        const allowedServerIds = process.env.ALLOWED_SERVER_IDS.split(',');
+        const allowedServerIds = [process.env.DEV_SERVER, process.env.PROD_SERVER]
 
         // Check if the joined guild is in the allowed list
         if (!allowedServerIds.includes(guild.id)) {

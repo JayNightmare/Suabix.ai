@@ -37,8 +37,11 @@ module.exports = {
                     continue;
                 }
 
+                const allowedServerIds = [process.env.DEV_SERVER, process.env.PROD_SERVER]
+                // const allowedServerIds = serverList.split(',');
+
                 // Check if the guild ID matches the allowed server ID
-                if (fullGuild.id !== process.env.ALLOWED_SERVER_ID) {
+                if (!allowedServerIds.includes(fullGuild.id)) {
                     console.log(`Leaving unauthorized guild: ${fullGuild.name} (${fullGuild.id})`);
                     await fullGuild.leave(); // Leave the guild
                 } else {
