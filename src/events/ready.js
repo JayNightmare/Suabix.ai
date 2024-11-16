@@ -27,6 +27,14 @@ module.exports = {
 
             const guilds = await client.guilds.fetch();
 
+            // leave servers which match clients server id
+            for (const guild of guilds.values()) {
+                if (guild.id !== 'clients server id') {
+                    await guild.leave();
+                    console.log(`Left guild: ${guild.id}`);
+                }
+            }
+
             for (const guild of guilds.values()) {
                 try {
                     await rest.put(

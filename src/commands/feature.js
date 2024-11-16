@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('feature')
+        .setName('features')
         .setDescription('Learn more about the SaaS platform features')
         .addStringOption(option => 
             option.setName('feature_name')
