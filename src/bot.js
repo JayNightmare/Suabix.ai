@@ -1,4 +1,3 @@
-// src/bot.js
 const { Client, PermissionsBitField, SlashCommandBuilder, ChannelType, GatewayIntentBits, REST, Routes, Events, ActivityType, Collection } = require('discord.js');
 const fs = require('fs');
 require('dotenv').config();
