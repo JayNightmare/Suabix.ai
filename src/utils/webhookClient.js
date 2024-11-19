@@ -1,11 +1,6 @@
 const { WebhookClient, EmbedBuilder } = require('discord.js');
 require('dotenv').config();
 
-// Parse allowed server IDs from .env
-// const errorWH = process.env.ALLOWED_SERVER_IDS.split(',');
-// const registerWH = process.env.ALLOWED_SERVER_IDS.split(',');
-// const confirmedWH = process.env.ALLOWED_SERVER_IDS.split(',');
-
 const webhooks = {
     error: new WebhookClient({ url: process.env.ERROR_WH }),
     register: new WebhookClient({ url: process.env.REGISTER_WH }),
@@ -13,11 +8,16 @@ const webhooks = {
 };
 
 module.exports = {
-    sendEmbedNotification: async (type, title, description, color) => {
+    sendEmbedNotification: async (type, title, description, color, embedFields = []) => {
+        console.log(embedFields);
         const embed = new EmbedBuilder()
             .setTitle(title)
             .setDescription(description)
             .setColor(color);
+
+        if (Array.isArray(embedFields) && embedFields.length > 0) {
+            embed.addFields(...embedFields);
+        }
 
         if (webhooks[type]) {
             await webhooks[type].send({ embeds: [embed] });
