@@ -23,6 +23,7 @@ module.exports = {
                     { label: 'Features', description: 'View the features of the website and AI.', value: 'features' },
                     { label: 'Register', description: 'Learn how to sign up on the website.', value: 'register' },
                     { label: 'Confirm Registration', description: 'Confirm your registration on the website.', value: 'confirm_registration' },
+                    { label: 'Admin', description: 'View admin commands.', value: 'admin' },
                     { label: 'Coming Soon', description: 'Learn about future features.', value: 'coming_soon' }
                 ])
         );
@@ -70,7 +71,7 @@ module.exports = {
                         .setTitle("Confirm Registration")
                         .setDescription("Confirms your registration on the website.")
                         .addFields(
-                            { name: "/confirmregistration", value: "Verify your account after registering on the website." }
+                            { name: "/confirm-registration", value: "Verify your account after registering on the website." }
                         );
                     break;
 
@@ -81,6 +82,24 @@ module.exports = {
                         .setDescription("This bot is under active development. Future commands will include:")
                         .addFields(
                             { name: "Planned Features", value: "Commands for managing your account, advanced analytics, and more." }
+                        );
+                    break;
+
+                case 'admin':
+                    if (!interaction.member.permissions.has('ADMINISTRATOR')) {
+                        sectionEmbed = new EmbedBuilder()
+                        .setColor('#fd4b51')
+                        .setTitle("Missing Perms")
+                        .setDescription("You are not allowed to view the admin commands. You need the Administrator permission to view this.")
+                        break;
+                    }
+
+                    sectionEmbed = new EmbedBuilder()
+                        .setColor('#1d5b5b')
+                        .setTitle("Admin")
+                        .setDescription("View admin commands.")
+                        .addFields(
+                            { name: "/confirm-users", value: "Confirm a users registration" }
                         );
                     break;
 
