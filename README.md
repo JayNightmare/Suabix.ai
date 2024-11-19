@@ -10,6 +10,6 @@ Step 3: Run the bot by running `node ./src/bot.js`.
 ## Commands
 - `/help`: Displays a list of available commands.
 - `/features`: Displays a list of available features
-- `register`: User can register
-- `confirm-registeration`: User can confirm their registration
-- `confirm-user`: admin command to confirm user registration
+- `/register`: User can register
+- `/confirm-registeration`: User can confirm their registration
+- `/confirm-user`: admin command to confirm user registration
